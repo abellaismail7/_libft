@@ -1,15 +1,24 @@
 
-void * memchr(const void *s, int c, size_t n)
+int ft_is_equal(char *c1, char *c2)
 {
-	c = (unsigned char) c;
-	while(*s)
+	return (*c1  == *c2);
+}
+
+void *ft_memchr(const void *s, int c, unsigned int n)
+{
+	int i;
+	char *str;
+
+	str = s;
+	i = 0;
+	while(i < n && str[i])
 	{
-		if(*s == c)
-			return (s);
-		s++;
+		if(ft_is_equal(str + i, (char *) &c))
+			return (str + i);
+		i++;
 	}
 	if(c == 0)
-		return (s);
+		return (str);
 	else	
 		return 0;
 }

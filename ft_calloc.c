@@ -1,11 +1,15 @@
-void *calloc(size_t count, size_t size)
-{
-	void	*mem;
-	int		i;
+#include<stdlib.h>
 
-	mem = malloc(size);
+void *ft_calloc(unsigned int count, unsigned int size)
+{
+	char	*mem;
+	int		i;
+	int		len;
+
+	len = count * size;
 	i = 0;
-	while(i < size)
+	mem = malloc(len);
+	while(i < len)
 		mem[i++] = 0;	
 	
 	return (mem);

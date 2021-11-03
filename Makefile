@@ -1,4 +1,4 @@
-CC		= cc
+CC		= gcc
 CCFLAGS = -Wall -Wextra -Werror
 INCLUDE = -I./include
 AR		= ar
@@ -12,7 +12,7 @@ NAME	= libft.a
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(AR) $(ARFLAGS) $(LIB) $(OBJ)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJ)
 
 
 $(B_DIR)/%.o: %.c

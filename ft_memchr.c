@@ -6,12 +6,12 @@ int ft_is_equal(char *c1, char *c2)
 
 void *ft_memchr(const void *s, int c, unsigned int n)
 {
-	int i;
+	unsigned int i;
 	char *str;
 
-	str = s;
+	str = (char*) s;
 	i = 0;
-	while(i < n && str[i])
+	while(i < n)
 	{
 		if(ft_is_equal(str + i, (char *) &c))
 			return (str + i);

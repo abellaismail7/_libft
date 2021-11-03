@@ -1,12 +1,11 @@
 
-size_t ft_strlen(char *str)
+int ft_strlen(char *str)
 {
-	size_t count;
+	int count;
 
 	count = 0;
 	while (str[count])
 		count++;
 
 	return count;
-
 }

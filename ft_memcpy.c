@@ -1,11 +1,16 @@
 
-void *memcpy(void *dst, const void *src, size_t n)
+void *ft_memcpy(void *dst, const void *src, unsigned int n)
 {
-	int	i;
+	char *_dst;
+	const char *_src;
+	unsigned int	i;
 
-	while(i < n)
+	_dst = (char *) dst;
+	_src = (char *) src;
+	i = 0;
+	while (i < n)
 	{
-		dst[i] = src[i];
+		_dst[i] = _src[i];
 		i++;
 	}
 	return dst;

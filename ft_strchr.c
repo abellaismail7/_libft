@@ -1,15 +1,17 @@
 
 char *strchr(const char *s, int c)
 {
-	c = (char) c;
-	while(*s)
+	char *str;
+
+	str = (char*) s;
+	while(*str)
 	{
-		if(*s == c)
-			return (s);
-		s++;
+		if(*str == c)
+			return (str);
+		str++;
 	}
 	if(c == 0)
-		return (s);
+		return (str);
 	else	
 		return 0;
 }

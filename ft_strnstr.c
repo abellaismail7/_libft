@@ -1,11 +1,11 @@
 
-char * strnstr(const char *haystack, const char *needle, size_t len);
+char * strnstr(const char *haystack, const char *needle, unsigned int len)
 {
-	int	i;
-	int	j;
+	unsigned int	i;
+	unsigned int	j;
 
 	if (!*needle)
-		return (haystack);
+		return ((char*) haystack);
 	i = 0;
 	while (haystack[i])
 	{
@@ -13,7 +13,7 @@ char * strnstr(const char *haystack, const char *needle, size_t len);
 		while (needle[j] && haystack[i + j] == needle[j])
 			j++;
 		if (!needle[j] || j >= len)
-			return (haystack+ i);
+			return ((char*) haystack+ i);
 		i++;
 	}
 	return (0);

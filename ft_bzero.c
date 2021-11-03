@@ -1,13 +1,6 @@
+void *ft_memset(void *b, int c, unsigned int len);
 
 void	ft_bzero(void *s, unsigned int n)
 {
-	unsigned int	i;
-	char *str = s;
-
-	i = 0;
-	while(i < n)
-	{
-		str[i] = 0;
-		i++;
-	}
+	ft_memset(s, 0, n);
 }

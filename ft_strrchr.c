@@ -7,11 +7,11 @@ char *strchr(const char *s, int c)
 	while(*s)
 	{
 		if(*s == c)
-			last = s;
+			last = (char*) s;
 		s++;
 	}
 	if(c == 0)
-		return s;
+		return (char*)s;
 	else
 		return (last);
 }

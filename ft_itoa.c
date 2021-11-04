@@ -1,3 +1,4 @@
+#include <stdio.h>
 int	nbr_size(int nbr)
 {
 	int	i;

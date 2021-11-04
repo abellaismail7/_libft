@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdlib.h>
 int	nbr_size(int nbr)
 {
 	int	i;
@@ -19,7 +19,7 @@ char	*ft_itoa(int nbr)
 	char	*result;
 
 	is_neg = nbr < 0;
-	i = (nbr <= 0) + nbr_size(nbr, 10);
+	i = (nbr <= 0) + nbr_size(nbr);
 	result = malloc(sizeof(char) * i);
 	if (result)
 		return 0;

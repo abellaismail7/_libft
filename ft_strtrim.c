@@ -1,3 +1,14 @@
+#include <stdio.h>
+#include<stdlib.h>
+
+char *count_ntrim(char const *s1, char const *set, int *count)
+{
+	puts(s1);
+	puts(set);
+	puts((char *) count);
+	return 0;
+
+}
 
 char *ft_strtrim(char const *s1, char const *set)
 {

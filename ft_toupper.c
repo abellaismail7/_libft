@@ -1,4 +1,5 @@
-char	*ft_upper(char *str)
+
+char	*ft_toupper(char *str)
 {
 	char	c;
 	int		i;

@@ -19,6 +19,8 @@ $(B_DIR)/%.o: %.c
 	mkdir -p $(@D)
 	$(CC) $(CCFLAGS) $(INCLUDE) -o $@ -c $<
 
+bonus: all
+
 debug: CCFLAGS += -g
 debug: all
 

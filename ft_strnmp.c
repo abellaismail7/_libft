@@ -1,10 +1,10 @@
-
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+#include "libft.h"
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	int	i;
 	int	j;
 
-	if (n == 0)
+	if (n < 1)
 		return (0);
 	i = 0;
 	j = n - 1;

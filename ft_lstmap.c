@@ -14,16 +14,18 @@ void (*del)(void *))
 	cur = lst;
 	while(cur)
 	{
-		ncur = ft_lstnew(f(cur));
 		if(is_first)
 		{
+			ncur = ft_lstnew(f(cur->content));
 			new_lst = ncur;
 			is_first = 0;
+		}else {
+			ncur->next = ft_lstnew(f(cur->content));
+			ncur = ncur->next;
 		}
-		ncur = ncur->next;
-		del(cur->content);
 		tcur = cur;
 		cur = cur->next;
+		del(tcur->content);
 		free(tcur);
 	}
 	return new_lst;

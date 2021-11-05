@@ -1,57 +1,88 @@
 #include<stdlib.h>
 
-int is_space(char c)
+int	split_counter(char *str, char c)
 {
-    return c == ' ';
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		while (str[i] && c != str[i])
+			i++;
+		while (c == str[i])
+			i++;
+		count++;
+	}
+	return (count);
 }
 
-int sp_counter(char *str)
+int	word_counter(char *str, char c)
 {
-    int count = 0;
-    while (*str){
-        while (*str && !is_space(*str))
-            str++;
-        while(*str && is_space(*str))
-            str++;
-        count++;
-    }
-    return count;
+	int	count;
+
+	count = 0;
+	while (*str && c != *str)
+	{
+		count++;
+		str++;
+	}
+	return (count);
 }
 
-char    **ft_split(char *str)
+char	*create_word(char *str, char c, char **word)
 {
-	char **result; 
-   	int sp_count;
-	int j;
-	int i;
-   	int wc;
+	int	wcount;
+	int	j;
 
-    while(is_space(*str))
-        str++;
-	sp_count = sp_counter(str);
-   	result = malloc(sizeof(char*) * (sp_count + 1)); 
-   	result[sp_count] = 0;
-   	if(!result)
-       return NULL;
-   	i = 0;
-   	while(i < sp_count){
-   	     wc = 0;
-   	     while(str[wc] && !is_space(str[wc]))
-   	         wc++;
-   	     
-   	     result[i] = malloc(sizeof(char) * (wc + 1));
-   	     result[i][wc] = 0;
-  	     j = 0;
-   	     while(*str && !is_space(*str))
-   	     {
-   	         result[i][j] = *str;
-   	         j++;
-   	         str++;
-   	     }
-   	     while(*str && is_space(*str))
-   	         str++;
-   	     i++;
-   	}
-   	return result;
+	wcount = word_counter(str, c);
+	*word = malloc(sizeof(char) * (wcount + 1));
+    if(*word == 0)
+       return 0;
+	(*word)[wcount] = 0;
+	j = 0;
+	while (j < wcount)
+		(*word)[j++] = *str++;
+	while (c == *str)
+		str++;
+	return (str);
 }
 
+void free_split(char **result, int size)
+{
+   while(size--)
+   {
+      free(result[size]);
+   }
+   free(result);
+}
+
+char	**ft_split(char *str, char c)
+{
+	char	**result;
+	int		spcount;
+	int		i;
+
+    if (str == 0)
+       return 0;
+	while (*str && c == *str)
+		str++;
+	spcount = split_counter(str, c);
+	result = malloc(sizeof(char *) * (spcount + 1));
+	if (!result)
+		return (0);
+	result[spcount] = 0;
+	i = 0;
+	while (i < spcount)
+	{
+		str = create_word(str, c, result + i);
+        if(str == 0)
+        {
+           free_split(result, i);
+           return 0;
+        }
+		i++;
+	}
+	return (result);
+}

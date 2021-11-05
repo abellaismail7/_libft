@@ -1,16 +1,18 @@
 
-char *strchr(const char *s, int c)
+char *ft_strrchr(const char *s, int c)
 {
+	unsigned char uc;
 	char *last;
 
 	last = 0;
+	uc = c;
 	while(*s)
 	{
-		if(*s == c)
+		if(*s == uc)
 			last = (char*) s;
 		s++;
 	}
-	if(c == 0)
+	if(uc == 0)
 		return (char*)s;
 	else
 		return (last);

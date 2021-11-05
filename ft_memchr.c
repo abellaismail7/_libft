@@ -1,9 +1,4 @@
 
-int ft_is_equal(char *c1, char *c2)
-{
-	return (*c1  == *c2);
-}
-
 void *ft_memchr(const void *s, int c, unsigned int n)
 {
 	unsigned int i;
@@ -13,12 +8,12 @@ void *ft_memchr(const void *s, int c, unsigned int n)
 	i = 0;
 	while(i < n)
 	{
-		if(ft_is_equal(str + i, (char *) &c))
+		if(str[i] == c)
 			return (str + i);
 		i++;
 	}
 	if(c == 0)
-		return (str);
+		return (str + i);
 	else	
 		return 0;
 }

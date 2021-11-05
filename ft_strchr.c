@@ -1,16 +1,18 @@
 
-char *strchr(const char *s, int c)
+char *ft_strchr(const char *s, int c)
 {
+	unsigned char uc;
 	char *str;
 
 	str = (char*) s;
+	uc = c;
 	while(*str)
 	{
-		if(*str == c)
+		if(*str == uc)
 			return (str);
 		str++;
 	}
-	if(c == 0)
+	if(uc == 0)
 		return (str);
 	else	
 		return 0;

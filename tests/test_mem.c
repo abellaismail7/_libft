@@ -62,4 +62,5 @@ int main()
 	dres = ft_memcmp(icp, "abcdeg", 6);
 	printf("%d", dres);
 
+  	return 0;
 }

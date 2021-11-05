@@ -1,15 +1,6 @@
-char	*ft_tolower(char *str)
+int ft_tolower(int c)
 {
-	char	c;
-	int		i;
-
-	i = 0;
-	while (str[i])
-	{
-		c = str[i];
-		if (c >= 'A' && c <= 'Z')
-			str[i] += 32;
-		i++;
-	}
-	return (str);
+	if (c >= 'A' && c <= 'Z')
+		return c + 32;
+	return c;
 }

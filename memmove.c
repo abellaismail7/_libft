@@ -8,9 +8,6 @@ void *ft_memmove(void *dst, const void *src, unsigned int n)
 	_dst = (char *) dst;
 	_src = (char *) src;
 
-	if ( dst == 0 || src == 0)
-		return dst;
-
 	if (_dst > _src)
 	{
 		i = n;

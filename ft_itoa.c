@@ -21,7 +21,7 @@ char	*ft_itoa(int nbr)
 	is_neg = nbr < 0;
 	i = (nbr <= 0) + nbr_size(nbr);
 	result = malloc(sizeof(char) * i);
-	if (result)
+	if (result == 0)
 		return 0;
 	result[0] = '-';
 	result[--i] = 0;

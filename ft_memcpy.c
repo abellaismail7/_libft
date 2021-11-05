@@ -1,5 +1,4 @@
 
-
 void *ft_memcpy(void *dst, const void *src, unsigned int n)
 {
 	char *_dst;

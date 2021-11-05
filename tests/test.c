@@ -52,4 +52,12 @@ int main()
 	dres = ft_strlen(icp);
 	odres = strlen(icp);
 	printf("%d %d", dres, odres);
+
+	puts("");
+	puts("========= toupper ========");
+	dres = 55;
+	odres = dres;
+	dres = ft_toupper(dres);
+	odres = toupper(odres);
+	printf("%d %d", dres, odres);
 }

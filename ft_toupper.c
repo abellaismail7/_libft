@@ -1,17 +1,8 @@
 
-char	*ft_toupper(char *str)
+int ft_toupper(int c)
 {
-	char	c;
-	int		i;
-
-	i = 0;
-	while (str[i])
-	{
-		c = str[i];
-		if (c >= 'a' && c <= 'z')
-			str[i] -= 32;
-		i++;
-	}
-	return (str);
+	if (c >= 'a' && c <= 'z')
+		return c - 32;
+	return c;
 }
 

@@ -3,11 +3,13 @@
 void ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	t_list *cur;
+	t_list *tcur;
 
 	cur = lst;
 	while(cur)
 	{
-		f(cur);
-		cur = cur->next;
+		tcur = cur->next;
+		f(cur->content);
+		cur = tcur;
 	}
 }

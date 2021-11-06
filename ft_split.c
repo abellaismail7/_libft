@@ -11,7 +11,7 @@ int	split_counter(char *str, char c)
 	{
 		while (str[i] && c != str[i])
 			i++;
-		while (c == str[i])
+		while (c && c == str[i])
 			i++;
 		count++;
 	}
@@ -44,7 +44,7 @@ char	*create_word(char *str, char c, char **word)
 	j = 0;
 	while (j < wcount)
 		(*word)[j++] = *str++;
-	while (c == *str)
+	while (c && c == *str)
 		str++;
 	return (str);
 }
@@ -66,7 +66,8 @@ char	**ft_split(char *str, char c)
 
     if (str == 0)
        return 0;
-	while (*str && c == *str)
+
+	while (c && *str && c == *str)
 		str++;
 	spcount = split_counter(str, c);
 	result = malloc(sizeof(char *) * (spcount + 1));

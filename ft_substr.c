@@ -12,22 +12,18 @@ int min(int a, int b)
 char *ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char *res;
-	int i;
 	int size;
 
-	unsigned int s_len = ft_strlen(s);
-	if(start >= s_len )
+	if (s == 0)
 		return 0;
-	size = min(s_len, len) - start;
-	res = malloc(size * sizeof(char) + 1);
+	unsigned int s_len = ft_strlen(s);
+	if(start >= s_len)
+		size = 0;
+	else
+		size = min(s_len, len);
+	res = malloc((size + 1) * sizeof(char));
 	if (res == 0)
 		return 0;
-	res[size] = 0;
-	i = 0;
-	while (i < size)
-	{
-		res[i] = s[start + i];
-		i++;
-	}
+	ft_strlcpy(res, s + start, size + 1);
 	return res;
 }

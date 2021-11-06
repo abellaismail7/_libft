@@ -33,10 +33,10 @@ char *count_ntrim(char const *s1, char const *set, int *count)
 		s1++;
 		len--;
 	}
-	while(len-- && !has_char(set, s1[len]))
-	{
-		(*count)++;
-	}
+	len--;
+	while( len >= 0 && has_char(set, s1[len]))
+		len--;
+	*count = len + 1;
 	return (char *) s1;
 }
 
@@ -46,8 +46,9 @@ char *ft_strtrim(char const *s1, char const *set)
 	int		i;
 	char	*result;
 
+	if(s1 == 0)
+		return 0;
 	s1 = count_ntrim(s1, set, &count);
-	printf("%d", count);
 	result = malloc(count * sizeof(char) + 1);
 	if (result == 0)
 		return 0;
@@ -60,9 +61,9 @@ char *ft_strtrim(char const *s1, char const *set)
 	}
 	return result;
 }
-
-int main()
-{
-	char *s = ft_strtrim(" oo  ppabcdo pd oo  ", " op");
-	printf("=> %s\n", s);
-}
+//
+//int main()
+//{
+//	char *s = ft_strtrim(" oo  ppabcdo pdd oo  ", " op");
+//	printf("=> %s\n", s);
+//}

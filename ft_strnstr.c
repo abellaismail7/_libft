@@ -10,7 +10,7 @@ char * ft_strnstr(const char *haystack, const char *needle, unsigned int len)
 	while (haystack[i] && i < len)
 	{
 		j = 0;
-		while (needle[j] && haystack[i + j] == needle[j])
+		while (needle[j] && haystack[i + j] == needle[j] && i + j < len)
 			j++;
 		if (!needle[j])
 			return ((char*) haystack+ i);

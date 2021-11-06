@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iait-bel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/06 17:37:08 by iait-bel          #+#    #+#             */
+/*   Updated: 2021/11/06 17:37:08 by iait-bel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include "libft.h"
 
@@ -17,13 +29,13 @@ void	_ft_putnbr(int fd, int nb)
 	}
 }
 
-void ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
 	int	min;
 
 	if (n < 0)
 	{
-		write(1, "-", 1);
+		write(fd, "-", 1);
 		min = 1 << (sizeof(int) * 8 - 1);
 		if (min == n)
 		{

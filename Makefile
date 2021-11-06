@@ -1,35 +1,37 @@
 CC		= gcc
 CCFLAGS = -Wall -Wextra -Werror
-INCLUDE = -I./include
+INCLUDE = -I.
 AR		= ar
 ARFLAGS = rc
 
-SRC 	= $(wildcard *.c) 
-B_DIR	= build
-OBJ		= $(addprefix $(B_DIR)/, $(SRC:.c=.o))
+MANDATORY	= memset bzero memcpy memmove memchr memcmp strlen isalpha isdigit isalnum \
+				isascii isprint toupper tolower strchr strrchr strncmp strlcpy strlcat strnstr \
+				atoi calloc strdup substr strjoin strtrim split itoa strmapi putchar_fd putstr_fd \
+				putendl_fd putnbr_fd striteri
+BONUS		= lstnew lstadd_front lstsize lstlast lstadd_back lstdelone lstclear lstiter lstmap
+
+M_OBJ	= $(MANDATORY:=.o)
+B_OBJ	= $(BONUS:=.o)
 NAME	= libft.a
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(AR) $(ARFLAGS) $(NAME) $(OBJ)
+$(NAME): $(M_OBJ)
+	$(AR) $(ARFLAGS) $(NAME) $(M_OBJ)
 
+bonus: $(B_OBJ) $(M_OBJ)
+	$(AR) $(ARFLAGS) $(NAME) $(M_OBJ) $(B_OBJ)
 
-$(B_DIR)/%.o: %.c
-	mkdir -p $(@D)
+%.o: ft_%.c
 	$(CC) $(CCFLAGS) $(INCLUDE) -o $@ -c $<
 
-bonus: all
-
-debug: CCFLAGS += -g
-debug: all
-
 clean:
-	rm -f $(OBJ)
-	rm -rf $(B_DIR)
-	rm -rf $(TEST_EXEC)
+	rm -f $(M_OBJ)
+	rm -f $(B_OBJ)
 
 fclean: clean
-	rm -f $(LIB)
+	rm -f $(NAME)
 
-.PHONY: all clean fclean debug
+re: fclean all
+
+.PHONY: all clean fclean bonus

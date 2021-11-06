@@ -1,7 +1,19 @@
-int ft_isalpha(int c);
-int ft_isdigit(int c);
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iait-bel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/06 15:05:19 by iait-bel          #+#    #+#             */
+/*   Updated: 2021/11/06 15:05:19 by iait-bel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_isalnum(int c)
+int	ft_isalpha(int c);
+int	ft_isdigit(int c);
+
+int	ft_isalnum(int c)
 {
 	return (ft_isalpha(c) || ft_isdigit(c));
 }

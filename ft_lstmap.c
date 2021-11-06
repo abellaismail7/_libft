@@ -1,11 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iait-bel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/06 15:24:44 by iait-bel          #+#    #+#             */
+/*   Updated: 2021/11/06 15:24:44 by iait-bel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include "libft.h"
 
-void del_lstel(t_list *last, t_list *cur, void (*del)(void *))
+void	del_lstel(t_list *last, t_list *cur, void (*del)(void *))
 {
-	t_list *next;
+	t_list	*next;
 
-	
 	if (last)
 	{
 		last->next = cur->next;
@@ -15,32 +26,36 @@ void del_lstel(t_list *last, t_list *cur, void (*del)(void *))
 	next = cur->next;
 }
 
-t_list *ft_lstmap(t_list *lst, void *(*f)(void *),
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *),
 void (*del)(void *))
 {
-	t_list *cur;
-	t_list *ncur;
-	t_list *last;
-	t_list *next;
-	t_list *new_lst;
-	int is_first;
-	void *content;
+	t_list	*cur;
+	t_list	*ncur;
+	t_list	*last;
+	t_list	*next;
+	t_list	*new_lst;
+	void	*content;
+	int		is_first;
 
 	is_first = 1;
 	cur = lst;
 	last = 0;
-	while(cur)
+	while (cur)
 	{
 		content = f(cur->content);
-		if(is_first && content != 0)
+		if (is_first && content != 0)
 		{
 			ncur = ft_lstnew(content);
 			new_lst = ncur;
 			is_first = 0;
-		}else if(content != 0) {
+		}
+		else if (content != 0)
+		{
 			ncur->next = ft_lstnew(content);
 			ncur = ncur->next;
-		}else{
+		}
+		else
+		{
 			next = cur->next;
 			del_lstel(last, cur, del);
 			cur = next;
@@ -48,5 +63,5 @@ void (*del)(void *))
 		last = cur;
 		cur = cur->next;
 	}
-	return new_lst;
+	return (new_lst);
 }

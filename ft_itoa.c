@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iait-bel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/06 15:06:00 by iait-bel          #+#    #+#             */
+/*   Updated: 2021/11/06 15:06:00 by iait-bel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
+
 int	nbr_size(int nbr)
 {
 	int	i;
@@ -22,7 +35,7 @@ char	*ft_itoa(int nbr)
 	i = (nbr <= 0) + nbr_size(nbr);
 	result = malloc(sizeof(char) * i);
 	if (result == 0)
-		return 0;
+		return (0);
 	result[0] = '-';
 	result[--i] = 0;
 	if (!is_neg)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iait-bel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/06 15:07:56 by iait-bel          #+#    #+#             */
+/*   Updated: 2021/11/06 15:07:56 by iait-bel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include<stdlib.h>
 
 int	split_counter(char *str, char c)
@@ -38,8 +50,8 @@ char	*create_word(char *str, char c, char **word)
 
 	wcount = word_counter(str, c);
 	*word = malloc(sizeof(char) * (wcount + 1));
-    if(*word == 0)
-       return 0;
+	if (*word == 0)
+		return (0);
 	(*word)[wcount] = 0;
 	j = 0;
 	while (j < wcount)
@@ -49,13 +61,13 @@ char	*create_word(char *str, char c, char **word)
 	return (str);
 }
 
-void free_split(char **result, int size)
+void	free_split(char **result, int size)
 {
-   while(size--)
-   {
-      free(result[size]);
-   }
-   free(result);
+	while (size--)
+	{
+		free(result[size]);
+	}
+	free(result);
 }
 
 char	**ft_split(char *str, char c)
@@ -64,9 +76,8 @@ char	**ft_split(char *str, char c)
 	int		spcount;
 	int		i;
 
-    if (str == 0)
-       return 0;
-
+	if (str == 0)
+		return (0);
 	while (c && *str && c == *str)
 		str++;
 	spcount = split_counter(str, c);
@@ -78,11 +89,11 @@ char	**ft_split(char *str, char c)
 	while (i < spcount)
 	{
 		str = create_word(str, c, result + i);
-        if(str == 0)
-        {
-           free_split(result, i);
-           return 0;
-        }
+		if (str == 0)
+		{
+			free_split(result, i);
+			return (0);
+		}
 		i++;
 	}
 	return (result);

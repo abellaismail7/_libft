@@ -22,7 +22,7 @@ $(NAME): $(M_OBJ)
 bonus: $(B_OBJ) $(M_OBJ)
 	$(AR) $(ARFLAGS) $(NAME) $(M_OBJ) $(B_OBJ)
 
-%.o: %.c
+%.o: %.c libft.h
 	$(CC) $(CCFLAGS) $(INCLUDE) -o $@ -c $<
 
 clean:

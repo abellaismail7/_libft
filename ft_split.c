@@ -12,7 +12,7 @@
 
 #include<stdlib.h>
 
-int	split_counter(char *str, char c)
+static int	split_counter(char *str, char c)
 {
 	int	i;
 	int	count;
@@ -30,7 +30,7 @@ int	split_counter(char *str, char c)
 	return (count);
 }
 
-int	word_counter(char *str, char c)
+static int	word_counter(char *str, char c)
 {
 	int	count;
 
@@ -43,7 +43,7 @@ int	word_counter(char *str, char c)
 	return (count);
 }
 
-char	*create_word(char *str, char c, char **word)
+static char	*create_word(char *str, char c, char **word)
 {
 	int	wcount;
 	int	j;
@@ -61,7 +61,7 @@ char	*create_word(char *str, char c, char **word)
 	return (str);
 }
 
-void	free_split(char **result, int size)
+static void	free_split(char **result, int size)
 {
 	while (size--)
 	{

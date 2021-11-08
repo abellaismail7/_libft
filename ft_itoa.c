@@ -12,7 +12,7 @@
 
 #include <stdlib.h>
 
-int	nbr_size(int nbr)
+static int	nbr_size(int nbr)
 {
 	int	i;
 

@@ -14,7 +14,7 @@
 #include "libft.h"
 #include<stdlib.h>
 
-int	has_char(const char *str, char c)
+static int	has_char(const char *str, char c)
 {
 	while (*str)
 	{
@@ -25,7 +25,7 @@ int	has_char(const char *str, char c)
 	return (0);
 }
 
-char	*count_ntrim(char const *s1, char const *set, int *count)
+static char	*count_ntrim(char const *s1, char const *set, int *count)
 {
 	int	len;
 
@@ -63,9 +63,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	}
 	return (result);
 }
-//
-//int main()
-//{
-//	char *s = ft_strtrim(" oo  ppabcdo pdd oo  ", " op");
-//	printf("=> %s\n", s);
-//}

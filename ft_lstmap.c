@@ -13,17 +13,34 @@
 #include <stdlib.h>
 #include "libft.h"
 
-void	del_lstel(t_list *last, t_list *cur, void (*del)(void *))
+static t_list	*del_lstel(t_list *last, t_list *cur, void (*del)(void *))
 {
 	t_list	*next;
 
+	next = cur->next;
 	if (last)
-	{
 		last->next = cur->next;
-	}
 	del(cur->content);
 	free(cur);
-	next = cur->next;
+	if (last)
+		return (last);
+	else
+		return (next);
+}
+
+static t_list	*append_lst(t_list **new, t_list *ncur, void *content)
+{
+	if (*new == 0)
+	{
+		ncur = ft_lstnew(content);
+		*new = ncur;
+	}
+	else
+	{
+		ncur->next = ft_lstnew(content);
+		ncur = ncur->next;
+	}
+	return (ncur);
 }
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *),
@@ -32,34 +49,19 @@ void (*del)(void *))
 	t_list	*cur;
 	t_list	*ncur;
 	t_list	*last;
-	t_list	*next;
 	t_list	*new_lst;
 	void	*content;
-	int		is_first;
 
-	is_first = 1;
+	new_lst = 0;
 	cur = lst;
 	last = 0;
 	while (cur)
 	{
 		content = f(cur->content);
-		if (is_first && content != 0)
-		{
-			ncur = ft_lstnew(content);
-			new_lst = ncur;
-			is_first = 0;
-		}
-		else if (content != 0)
-		{
-			ncur->next = ft_lstnew(content);
-			ncur = ncur->next;
-		}
+		if (content == 0)
+			cur = del_lstel(last, cur, del);
 		else
-		{
-			next = cur->next;
-			del_lstel(last, cur, del);
-			cur = next;
-		}
+			ncur = append_lst(&new_lst, ncur, content);
 		last = cur;
 		cur = cur->next;
 	}
